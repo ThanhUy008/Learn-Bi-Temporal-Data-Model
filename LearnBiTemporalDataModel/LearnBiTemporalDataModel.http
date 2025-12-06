@@ -1,0 +1,6 @@
+@LearnBiTemporalDataModel_HostAddress = http://localhost:5107
+
+# GET {{LearnBiTemporalDataModel_HostAddress}}/weatherforecast/
+# Accept: application/json
+
+# ###
