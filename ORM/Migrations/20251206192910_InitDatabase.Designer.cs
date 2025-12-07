@@ -11,7 +11,7 @@ using ORM.Contexts;
 
 namespace ORM.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(OperationaldataContext))]
     [Migration("20251206192910_InitDatabase")]
     partial class InitDatabase
     {

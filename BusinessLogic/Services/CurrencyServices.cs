@@ -5,9 +5,9 @@ using Shared;
 
 namespace BusinessLogic.Services
 {
-    public class CurrencyServices(IBaseRepository<Currency> currencyRepo) : ICurrencyServices
+    public class CurrencyServices(IBiTemporalBaseRepository<Currency> currencyRepo) : ICurrencyServices
     {
-        private readonly IBaseRepository<Currency> _currencyRepo = currencyRepo;
+        private readonly IBiTemporalBaseRepository<Currency> _currencyRepo = currencyRepo;
 
         public async Task<CreateCurrencyResponse> CreateUpdateCurrency(CreateCurrencyRequest request)
         {

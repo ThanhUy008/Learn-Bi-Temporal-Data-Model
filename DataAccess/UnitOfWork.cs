@@ -5,9 +5,9 @@ using ORM.Contexts;
 
 namespace DataAccess
 {
-    public class UnitOfWork(Context context) : IUnitOfWork
+    public class UnitOfWork(OperationaldataContext context) : IUnitOfWork
     {
-        private readonly Context _context = context;
+        private readonly OperationaldataContext _context = context;
 
         public void Save()
         {

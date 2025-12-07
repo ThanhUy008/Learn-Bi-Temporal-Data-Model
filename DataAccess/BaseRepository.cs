@@ -6,10 +6,10 @@ using System.Linq.Expressions;
 
 namespace DataAccess;
 
-public class BaseRepository<TEntity>(Context context) : IBaseRepository<TEntity>
+public class BaseRepository<TEntity>(BaseContext context) : IBaseRepository<TEntity>
     where TEntity : BaseModel
 {
-    private readonly Context _context = context;
+    private readonly BaseContext _context = context;
 
     public virtual void Create(TEntity entity)
     {
@@ -17,7 +17,7 @@ public class BaseRepository<TEntity>(Context context) : IBaseRepository<TEntity>
         entity.UpdatedOn = DateTime.UtcNow;
         _context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Added;
     }
-    
+
     public virtual void Update(TEntity entity)
     {
         entity.UpdatedOn = DateTime.UtcNow;
@@ -27,15 +27,9 @@ public class BaseRepository<TEntity>(Context context) : IBaseRepository<TEntity>
     public virtual void UpdateRange(IList<TEntity> entities)
     {
         entities.ToList().ForEach(entry => {
-                entry.UpdatedOn = DateTime.UtcNow;
-                _context.Entry(entry).State = EntityState.Modified;
-            });
-    }
-
-    public virtual void Delete(TEntity entity)
-    {
-        entity.UpdatedOn = DateTime.UtcNow;
-        _context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+            entry.UpdatedOn = DateTime.UtcNow;
+            _context.Entry(entry).State = EntityState.Modified;
+        });
     }
 
     protected virtual IQueryable<TEntity> GetQueryable(

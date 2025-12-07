@@ -10,8 +10,8 @@ public class Product : BaseSoftDeleteModel
     public decimal Price { get; set; }
 
     public Guid ProductCategoryId { get; set; }
-    public Category Category { get; set; }
+    //public Category Category { get; set; }
 
     public Guid VATId { get; set; }
-    public Rate VAT { get; set; }
+    //public Rate VAT { get; set; }
 }

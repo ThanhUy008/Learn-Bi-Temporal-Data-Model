@@ -1,16 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using ORM.Models.MasterData;
+using ORM.Configurations;
 using ORM.Models.OperationalData;
 namespace ORM.Contexts;
 
-public class Context(IConfiguration configuration) : DbContext
+public class OperationaldataContext(IConfiguration configuration) : BaseContext
 {
     protected readonly IConfiguration _configuration = configuration;
 
-    public DbSet<Rate> Rates { get; set; }
-    public DbSet<Currency> Currencies { get; set; }
-    public DbSet<Category> Categories { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<OrderProduct> OrderProducts { get; set; }
@@ -19,8 +16,10 @@ public class Context(IConfiguration configuration) : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(Context).Assembly);
+        //modelBuilder.ApplyConfigurationsFromAssembly(typeof(OperationaldataContext).Assembly);
+        modelBuilder.ApplyConfiguration(new OrderProductConfigurations());
     }
+
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         if (!options.IsConfigured)

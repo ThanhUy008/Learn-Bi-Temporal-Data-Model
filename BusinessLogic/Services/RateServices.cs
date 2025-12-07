@@ -7,11 +7,11 @@ namespace BusinessLogic.Services
 {
     public class RateServices(
         ICurrencyServices currencyServices, 
-        IBaseRepository<Rate> rateRepo,
+        IBiTemporalBaseRepository<Rate> rateRepo,
         IUnitOfWork unitOfWork
         ) : IRateServices
     {
-        private readonly IBaseRepository<Rate> _rateRepo = rateRepo;
+        private readonly IBiTemporalBaseRepository<Rate> _rateRepo = rateRepo;
 
         private readonly ICurrencyServices _currencyServices = currencyServices;
 

@@ -5,14 +5,11 @@ namespace DataAccess.Interfaces
 {
     public interface IBaseRepository<TEntity> where TEntity : BaseModel
     {
-        public  void Create(TEntity entity);
+        public void Create(TEntity entity);
 
-        public  void Update(TEntity entity);
+        public void Update(TEntity entity);
 
-        public  void UpdateRange(IList<TEntity> entities);
-
-        public  void Delete(TEntity entity);
-
+        public void UpdateRange(IList<TEntity> entities);
 
         public  IEnumerable<TEntity> GetAll(
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,

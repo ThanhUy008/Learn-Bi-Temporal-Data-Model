@@ -10,9 +10,11 @@ public static class DI
 {
     public static void RegisterDatabaseConfigurations(this IServiceCollection services)
     {
-        services.AddDbContext<Context>();
+        services.AddDbContext<OperationaldataContext>();
+        services.AddDbContext<MasterdataContext>();
 
-        services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+        services.AddScoped(typeof(IBaseOperationalRepository<>), typeof(BaseOperationalRepository<>));
+        services.AddScoped(typeof(IBiTemporalBaseRepository<>), typeof(BiTemporalBaseRepository<>));
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }

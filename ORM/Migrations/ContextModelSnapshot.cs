@@ -10,7 +10,7 @@ using ORM.Contexts;
 
 namespace ORM.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(OperationaldataContext))]
     partial class ContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
