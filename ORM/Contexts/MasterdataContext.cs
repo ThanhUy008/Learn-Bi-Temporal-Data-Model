@@ -17,7 +17,7 @@ public class MasterdataContext(IConfiguration configuration, DateTime? pointInTi
 
     protected void SetQueryFilter<TEntity>(ModelBuilder modelBuilder) where TEntity : TemporalEntity
     {
-        modelBuilder.Entity<TEntity>().HasQueryFilter((TEntity e) => EF.Property<DateTime>(e, "ValidFrom") >= PointInTime && EF.Property<DateTime>(e, "ValidTo") <= PointInTime);
+        modelBuilder.Entity<TEntity>().HasQueryFilter((TEntity e) => EF.Property<DateTime>(e, "ValidFrom") <= PointInTime && EF.Property<DateTime>(e, "ValidTo") >= PointInTime);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
